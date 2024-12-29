@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单人练习|成语接龙</title>
+    <link rel="stylesheet" href="styles.css">
+	<script src="../PageControl.js"></script>
+	<script src="../CheckValid.js"></script>
+	<script src="1P.js"></script>
+</head>
+<body>
+<h1>成语接龙</h1>
+<div class="answer">
+	<p id="time"></p>
+	<p id="score"></p>
+	<p id="trial"></p>
+	<p id="idiom"></p>
+	<p id="hintword"></p>
+	<input id="inputbox" type="text" name="userinput" placeholder="输入成语">
+	<button id="submit" type="button" onclick="submit()">提交</button>
+</div>
+<button id="hint" type="button" onclick="hint(currentword)">提示</button>
+<button id="giveup" type="button" onclick="giveup()">放弃</button>
+<button type="button" onclick="home()">返回</button>
+</body>
+</html>

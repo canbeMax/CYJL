@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单人练习|成语接龙</title>
+    <link rel="stylesheet" href="styles.css">
+	<script src="../PageControl.js"></script>
+</head>
+<body>
+<h1>成语接龙</h1>
+<div class="timelimit">
+	<p>时间限制</p>
+	<input type="checkbox" id="timelimitenabled" checked>
+    <input type="number" id="timelimit" value="30" min="5" max="500">
+	<span>秒</span>
+</div>
+<button type="button" onclick="_1P_start()">开始练习</button>
+<button type="button" onclick="SearchIdioms()">查找成语</button>
+<button type="button" onclick="home()">返回</button>
+</body>
+</html>
