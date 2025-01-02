@@ -3,20 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>成语查找|单人练习|成语接龙</title>
-    <link rel="stylesheet" href="../Styles.css">
+    <link href="../Styles.css" rel="stylesheet">
 	<script src="../PageControl.js"></script>
-	<script src="../CheckValid.js"></script>
+	<script defer src="../searchIdiom.js"></script>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<link href="styles.css" rel="stylesheet">
+	<style>
+		p{
+			font-size: 20px;
+		}
+		
+		#idiomInput{
+			width: 200px;
+			height: 30px;
+			font-size: 16px;
+			border-radius: 7px;
+			border: none;
+			margin-top: 50px;
+			transition: 0.3s;
+		}
+		
+		#idiomInput:hover{
+			font-size: 20px;
+			height: 50px;
+			width: 300px;
+			border: 5px solid darkgrey;
+			transition: 0.3s;
+		}
+		
+		body.hidden {
+			opacity: 0;
+			transition: opacity 0.5s;
+		}
+		
+		.overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			transform: translateY(0);
+			transition: transform 0.5s ease-in-out;
+			z-index: 1000;
+		}
+	</style>
 </head>
 <body>
+	<div class="backDiv">
+		<button class="back" onclick="home()">
+			<img alt="back-arrow" class="backArrow" src="../assets/icons/arrow.png"/>
+		</button>
+	</div>
 
 	<p>成语查找</p>
-    <input type="text" name="userinput" placeholder="输入成语">
-	<button type="button" onclick="idiomDetail()">搜索</button>
-	<p id="meaning"></p>
-	<p id="pinyin"></p>
-	<p id="chuchu"></p>
+	<input id="idiomInput" placeholder="请输入成语" type="text">
+	<label for="idiomInput"></label>
+	
+	<p id="explanation"></p>
+	<p id="derivation" ></p>
 	<p id="example"></p>
-	<p id="valid"></p>
-	<button type="button" onclick="_1P()">返回</button>
+	<button id="checkButton" type="button">搜索</button>
+	<div class="overlay"></div>
+<script>
+	window.addEventListener('load', function() {
+		const overlay = document.querySelector('.overlay');
+		setTimeout(() => {
+			overlay.style.transform = 'translateY(-100%)';
+		}, 500);
+	});
+</script>
 </body>
 </html>

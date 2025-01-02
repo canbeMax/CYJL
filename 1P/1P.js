@@ -1,78 +1,64 @@
-var score=0;
-var trial=3;
-var currentword = randomIdiom();
-var run=true;
-var timelimitenabled = sessionStorage.getItem('timelimitenabled');
-var timelimit= sessionStorage.getItem('timelimit');
-var time=Number(timelimit);
+let last;
+let idioms = [];
+fetch('https://canbemax.github.io/CYJL/idiom.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('网络请求失败');
+        }
+        return response.json(); // 解析 JSON 数据
+    })
+    .then(data => {
+        idioms = data; // 将成语数据存储到全局变量
+        loadNewIdiom(); // 初始化第一个成语
+    })
+    
+    // 处理异常
+    .catch(error => {
+        console.error('加载 JSON 文件失败或数据错误:', error);
+    });
 
-function giveup(){
-	document.getElementById("submit").style.display = "none";
-	document.getElementById("inputbox").style.display = "none";
-	document.getElementById("hint").style.display = "none";
-	document.getElementById("giveup").style.display = "none";
-	document.getElementById("trial").style.display = "none";
-	hint(currentword);
-	document.getElementById("hintword").innerText = "可能的答案: "+document.getElementById("hintword").innerText;
-	document.getElementById("idiom").innerText = "最后一个成语: "+currentword;
-	run=false;
+
+function loadNewIdiom(){
+    const randomIndex = Math.floor(Math.random() * idioms.length);
+    const idiom = idioms[randomIndex];
+
+    if (!idiom || !idiom.word) {
+        console.error('成语数据无效');
+        return;
+    }
+
+    const word = idiom.word; // 当前成语
+    last = idiom.last; // 最后一个字的拼音
+
+    // 更新显示
+    const currentIdiom = document.getElementById('currentWord');
+    currentIdiom.innerText = "当前词语: " + word;
 }
-function ld(word){
-	console.log(pinyin(word));
-	var list = pinyin(word).split(" ");
-	return list[list.length-1];
-}
-function fd(word){
-	console.log(pinyin(word));
-	var list = pinyin(word).split(" ");
-	return list[0];
-}
-function submit(){
-	userinput=document.querySelector('input[name="userinput"]');
-	console.log(userinput.value[0]);
-	console.log(currentword[currentword.length-1]);
-	if(checkIdiom()){
-		if(ld(currentword)===fd(userinput.value)||currentword[currentword.length-1]===userinput.value[0]){
-			currentword=userinput.value;
-			document.getElementById('idiom').innerText = currentword;
-			trial=3;
-			score+=1;
-			time=timelimit;
-		}
-		else{
-			alert("接不上:(");
-		}
-	}
-	else{
-		alert("成语不存在:(");
-		if(trial>0){
-			trial-=1;
-		}
-		if(trial === 0){
-			giveup();
-		}
-	}
-	userinput.value='';
-	document.getElementById("hintword").innerText = "";
-	document.getElementById('trial').innerText = "剩余机会:"+String(trial);
-	document.getElementById('score').innerText = "积分:"+String(score);
-}
-window.onload = function(){
-	document.getElementById('idiom').innerText = currentword;
-	time.toFixed(1);
-	time=Number(time);
-	console.log(typeof(timelimitenabled));
-	if(timelimitenabled==="true"){
-		setInterval(function(){
-			if(run){
-				time-=0.1;
-				time=Math.round(time * 10) / 10;
-				if(time<=0){
-					giveup();
-					alert("时间用完了");
-				}
-				document.getElementById("time").innerText = time;
-			}
-		},100);
-	}
-}
+
+
+    document.getElementById('submit').addEventListener('click', function () {
+        const input = document.getElementById('inputBox').value; // 获取输入框的值
+    // 如果成语存在就获取成语的第一个字的拼音
+        try {
+            fetch('https://canbemax.github.io/CYJL/idiom.json') // 再次加载 idiom.json
+                .then(response => response.json())
+                .then(idioms => {
+                    const idiom = idioms.find(item => item.word === input);
+                    if (!idiom) {
+                        alert('此成语不存在');
+                    }
+                    const first = idiom.first; // 获取第一个字的拼音
+
+                    if (first === last) { // 比较 first 和 back
+                        alert('匹配成功');
+                        input.value = ''; // 清空输入框
+                        loadNewIdiom();
+                    } else {
+                        alert('不匹配');
+                        input.value = ''; // 清空输入框
+                    }
+                })
+        } catch (error) {
+            console.error('加载 JSON 文件失败: ', error);
+        }
+    })

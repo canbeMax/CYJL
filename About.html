@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+    <style>
+        @font-face {
+            font-family: 'Noto-Black';
+            src: url('assets/fonts/NotoSansSC-Black.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Noto-Bold';
+            src: url('assets/fonts/NotoSansSC-Bold.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Noto-Medium';
+            src: url('assets/fonts/NotoSansSC-Medium.ttf') format('truetype');
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        body {
+            margin: 50px;
+            color: #d4d4d4;
+            background-color: #1a1a1a;
+            font-family: 'Noto-Medium', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #d4d4d4;
+            font-family: 'Noto-Black', sans-serif;
+        }
+
+        h2 {
+            margin-left: 400px;
+            color: #d4d4d4;
+            font-family: 'Noto-Bold', sans-serif;
+            position: relative;
+        }
+
+        ul, ol {
+            color: #d4d4d4;
+            font-family: 'Noto-Medium', sans-serif;
+        }
+
+        .list {
+            margin-left: 400px;
+            position: relative;
+        }
+
+        p {
+            margin-left: 400px;
+            position: relative;
+            font-family: 'Noto-Bold', sans-serif;
+        }
+
+        .back {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            top: 20px;
+            left: 20px;
+            position: absolute;
+            background-color: #1a1a1a;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            width: 64px;
+            height: 64px;
+            background-color: #2b2b2b;
+            border-radius: 20%;
+            transition: background-color 0.3s, border-radius 0.5s, width 0.3s, height 0.3s;
+        }
+
+        .backDiv {
+            width: 48px;
+            height: 48px;
+        }
+
+        .backArrow {
+            width: 32px;
+            height: 32px;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        body.hidden {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+    </style>
+    
+    
+    <script>
+        function switchPage() {
+            document.body.classList.add('hidden');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        }
+    </script>
+</head>
+
+<body>
+<div class="backDiv fade-in">
+    <button class="back fade-in" onclick="switchPage()">
+        <img alt="back-arrow" class="backArrow fade-in" src="assets/icons/arrow.png"/>
+    </button>
+</div>
+
+<h1 class="fade-in">
+    什么是"成语接龙"?
+</h1>
+<h2 class="fade-in">
+    基本规则：
+</h2>
+<div class="list fade-in">
+    <ol>
+        <li>以一个成语开始，下一位参与者需要用前一个成语的最后一个字作为下一个成语的第一个字。</li>
+        <ul>
+            <li>示例：开头成语为 画龙点睛，接下来的成语可以是 睛花缭乱。</li>
+        </ul>
+        <li>如果没有合适的成语可以接，则游戏结束。</li>
+    </ol>
+</div>
+<h2 class="fade-in">
+    游戏意义：
+</h2>
+<div class="list fade-in">
+    <ol>
+        <li>文化传承：通过游戏形式，学习和记忆更多的成语。</li>
+        <li>语言能力：提高词汇量及思维敏捷性。</li>
+        <li>娱乐休闲：在家庭聚会或朋友间活跃气氛。</li>
+    </ol>
+</div>
+
+<p class="fade-in">快和朋友一起试试吧！</p>
+
+</body>
+
+
+</html>

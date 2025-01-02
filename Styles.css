@@ -1,4 +1,15 @@
+@font-face {
+    font-family: 'Noto-Black';
+    src: url('assets/fonts/NotoSansSC-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto-Medium';
+    src: url('assets/fonts/NotoSansSC-Medium.ttf') format('truetype');
+}
+
 body {
+    font-family: 'Noto-Medium', sans-serif;
     background-color: #1a1a1a;
     color: #d4d4d4;
     margin: 0;
@@ -9,13 +20,18 @@ body {
 }
 
 h1 {
+    font-family: 'Noto-Black', sans-serif;
     font-size: 50px;
     margin-bottom: 20px;
     text-align: center;
 }
 
 button {
-    color: #d4d4d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto-Medium', sans-serif;
+    color: #9c9c9c;
     background-color: #1a1a1a;
     border: none;
     cursor: pointer;
@@ -23,16 +39,71 @@ button {
     height: 70px;
     font-size: 30px;
     border-radius: 10px;
-    margin: 30px 0;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, width 0.5s ease, height 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
 
 button:hover {
+    width: 400px;
+    height: 200px;
+    font-size: 40px;
+    color: #e0e0e0;
     background-color: #2b2b2b;
-    transition: 0.3s;
+    transition: background-color 0.3s ease, width 0.5s ease, height 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
+
 
 button:focus {
     outline-color: transparent;
     outline-style: solid;
     box-shadow: 0 0 0 2px #2b2b2b;
+}
+
+#moreInfo {
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    top: 775px;
+    left: 1400px;
+    transition: 0.5s ease;
+
+    #infoIcon {
+        transition: 0.5s;
+    }
+}
+
+#moreInfo:hover {
+    top: 711px;
+    left: 1336px;
+    width: 128px;
+    height: 128px;
+    background-color: #2b2b2b;
+    transition: 0.5s ease;
+
+    #infoIcon {
+        filter: brightness(0) invert(1);
+        transition: 0.5s;
+        width: 64px;
+        height: 64px;
+    }
+}
+
+#moreInfo.zoomed {
+    background-color: #1a1a1a;
+    transform: scale(30);
+    transition: background-color 1s, transform 1.5s;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

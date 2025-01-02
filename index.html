@@ -3,13 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <title>成语接龙</title>
-    <link rel="stylesheet" href="Styles.css">
-	 <script src="PageControl.js"></script>
+    <link href="Styles.css" rel="stylesheet">
+    <script src="PageControl.js"></script>
+    <style>
+        body{
+        overflow: hidden;
+        }
+        body.hidden {
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .SP-1 {
+            margin-right: 10px;
+            transition: 0.5s ease;
+        }
+
+        .SP-2 {
+            margin-right: 10px;
+            transition: 0.5s ease;
+        }
+        .searchIdm {
+            margin-right: 10px;
+            transition: 0.5s ease;
+        }
+
+        .singlePlayerButton:hover {
+            .SP-1 {
+                filter: brightness(0) invert(1);
+                transition: 0.5s;
+            }
+        }
+
+        .singlePlayerButton {
+
+            .SP-1 {
+                transition: 0.5s;
+            }
+        }
+
+        .doublePlayerButton:hover {
+            .SP-2 {
+                filter: brightness(0) invert(1);
+                transition: 0.5s;
+            }
+
+        }
+
+        .doublePlayerButton {
+
+            .SP-2 {
+                transition: 0.5s;
+            }
+        }
+
+        .searchButton:hover {
+            .searchIdm {
+                filter: brightness(0) invert(1);
+                transition: 0.5s;
+            }
+
+        }
+
+        .searchButton {
+
+            .searchIdm {
+                transition: 0.5s;
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            transform: translateY(100%);
+            transition: transform 0.5s ease-in-out;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
-<h1>成语接龙</h1>
-<button type="button" onclick="_1P()">单人练习</button>
-<button type="button" onclick="_2P()">双人对战</button>
+
+<h1 class="fade-in">成语接龙</h1>
+
+<button class="singlePlayerButton fade-in" onclick="_1P()" type="button">
+    <img alt="Single Player" class="SP-1 fade-in" height="32" src="assets/icons/SPG.png" width="32">
+    单人练习
+</button>
+
+<button class="doublePlayerButton fade-in" onclick="_2P()" type="button">
+    <img alt="Double Player" class="SP-2 fade-in" height="32" src="assets/icons/DPG.png" width="32">
+    双人对战
+</button>
+
+<button class="searchButton fade-in" onclick="SearchIdioms()" type="button">
+    <img alt="searchIdioms" class="searchIdm fade-in" height="32" src="assets/icons/search.png" width="32">
+    查找成语
+</button>
+
+<div class="overlay"></div>
+
+
+<button class="fade-in" id="moreInfo" type="button">
+    <img alt="More Info" height="32" id="infoIcon" src="assets/icons/info.png" width="32">
+</button>
+
+<script>
+    const button = document.getElementById("moreInfo");
+    const image = document.getElementById('infoIcon');
+
+    button.addEventListener("click", function () {
+        this.classList.toggle("zoomed");
+        image.style.display = 'none';
+        setTimeout(function () {
+            window.location.href = 'About.html';
+        }, 1500);
+    });
+</script>
+
+
 </body>
 </html>
-

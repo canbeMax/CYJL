@@ -1,5 +1,15 @@
+@font-face {
+    font-family: 'Noto-Black';
+    src: url('../assets/fonts/NotoSansSC-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto-Medium';
+    src: url('../assets/fonts/NotoSansSC-Medium.ttf') format('truetype');
+}
+
 body {
-    /*font-family: ;*/
+    font-family: 'Noto-Medium', sans-serif;
     background-color: #1a1a1a;
     color: #d4d4d4;
     margin: 0;
@@ -10,13 +20,16 @@ body {
 }
 
 h1 {
+    font-family: 'Noto-Black', sans-serif;
+    font-weight: 900;
     font-size: 50px;
     margin-bottom: 20px;
     text-align: center;
 }
 
 button {
-    color: #d4d4d4;
+    font-family: 'Noto-Medium', sans-serif;
+    color: #9c9c9c;
     background-color: #1a1a1a;
     border: none;
     cursor: pointer;
@@ -24,16 +37,59 @@ button {
     height: 70px;
     font-size: 30px;
     border-radius: 10px;
-    margin: 30px 0;
+    margin: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, width 0.5s ease, height 0.3s ease, font-size 0.3s ease;
 }
 
 button:hover {
+    width: 400px;
+    height: 200px;
+    font-size: 40px;
+    color: #e0e0e0;
     background-color: #2b2b2b;
-    transition: 0.3s;
 }
 
 button:focus {
     outline-color: transparent;
     outline-style: solid;
     box-shadow: 0 0 0 2px #2b2b2b;
+}
+
+p {
+    font-family: 'Noto-Medium', sans-serif;
+    font-size: 20px;
+    color: #9c9c9c;
+}
+
+.back {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    background-color: #1a1a1a;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.back:hover {
+    width: 64px;
+    height: 64px;
+    background-color: #2b2b2b;
+    border-radius: 20%;
+    transition: background-color 0.3s, border-radius 0.5s, width 0.3s, height 0.3s;
+}
+
+.backDiv {
+    width: 48px;
+    height: 48px;
+}
+
+.backArrow {
+    width: 32px;
+    height: 32px;
 }

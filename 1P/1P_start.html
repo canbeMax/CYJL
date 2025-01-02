@@ -3,24 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <title>单人练习|成语接龙</title>
-    <link rel="stylesheet" href="styles.css">
-	<script src="../PageControl.js"></script>
-	<script src="../CheckValid.js"></script>
-	<script src="1P.js"></script>
+    <script src="../PageControl.js"></script>
+    <style>
+        .back {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            top: 20px;
+            left: 20px;
+            position: absolute;
+            background-color: #1a1a1a;
+            border: none;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .back:hover {
+            width: 64px;
+            height: 64px;
+            background-color: #2b2b2b;
+            border-radius: 20%;
+            transition: background-color 0.3s, border-radius 0.5s, width 0.3s, height 0.3s;
+        }
+
+        .backDiv {
+            width: 48px;
+            height: 48px;
+        }
+
+        .backArrow {
+            width: 32px;
+            height: 32px;
+        }
+        body {
+            font-family: 'Noto-Medium', sans-serif;
+            background-color: #1a1a1a;
+            color: #d4d4d4;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        p {
+            font-family: 'Noto-Medium', sans-serif;
+            font-size: 20px;
+            color: #9c9c9c;
+        }
+        button {
+            font-family: 'Noto-Medium', sans-serif;
+            color: #9c9c9c;
+            background-color: #1a1a1a;
+            border: none;
+            cursor: pointer;
+            width: 250px;
+            height: 70px;
+            font-size: 30px;
+            border-radius: 10px;
+            margin: 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        button:hover {
+            color: #e0e0e0;
+            background-color: #2b2b2b;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:focus {
+            outline-color: transparent;
+            outline-style: solid;
+            box-shadow: 0 0 0 2px #2b2b2b;
+        }
+        #inputBox{
+            width: 200px;
+            height: 30px;
+            font-size: 16px;
+            border-radius: 7px;
+            border: none;
+            margin-top: 50px;
+            transition: 0.3s;
+        }
+
+        #inputBox:hover{
+            font-size: 20px;
+            height: 50px;
+            width: 300px;
+            border: 5px solid darkgrey;
+            transition: 0.3s;
+        }
+    </style>
 </head>
 <body>
-<h1>成语接龙</h1>
-<div class="answer">
-	<p id="time"></p>
-	<p id="score"></p>
-	<p id="trial"></p>
-	<p id="idiom"></p>
-	<p id="hintword"></p>
-	<input id="inputbox" type="text" name="userinput" placeholder="输入成语">
-	<button id="submit" type="button" onclick="submit()">提交</button>
+
+<div class="backDiv fade-in">
+    <button class="back fade-in" onclick="_1P()">
+        <img alt="back-arrow" class="backArrow" src="../assets/icons/arrow.png"/>
+    </button>
 </div>
-<button id="hint" type="button" onclick="hint(currentword)">提示</button>
-<button id="giveup" type="button" onclick="giveup()">放弃</button>
-<button type="button" onclick="home()">返回</button>
+    <h2 id="currentWord"></h2>
+<input id="inputBox" name="userinput" placeholder="输入成语" type="text">
+<label for="inputBox"></label>
+
+
+
+<button id="submit" type="button">提交</button>
+<button id="hint" onclick="hint()" type="button">提示</button>
+
+<script src="1P.js"></script>
 </body>
 </html>
